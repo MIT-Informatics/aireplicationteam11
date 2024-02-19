@@ -1,0 +1,34 @@
+# Reproducibility
+
+```{r setup}
+library(conflicted)
+library(tidyverse)
+library(magrittr, include.only="%<>%")
+```
+
+```{r repro}
+
+```
+
+# Code Checks
+
+```{r code-checks}
+requireNamespace("codetools")
+requireNamespace("lintr")
+requireNamespace("goodpractice")
+
+# !diagnostics on 
+# !diagnostics level=all
+
+
+
+
+
+
+```
+
+# Robustness
+
+```{r robustness}
+
+```
