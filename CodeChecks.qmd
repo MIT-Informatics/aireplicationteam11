@@ -1,13 +1,9 @@
-# Reproducibility
+# Code checks
 
 ```{r setup}
 library(conflicted)
 library(tidyverse)
 library(magrittr, include.only="%<>%")
-```
-
-```{r repro}
-
 ```
 
 # Code Checks
@@ -22,13 +18,5 @@ requireNamespace("goodpractice")
 
 
 
-
-
-
-```
-
-# Robustness
-
-```{r robustness}
 
 ```
