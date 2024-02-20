@@ -25,3 +25,13 @@ requireNamespace("goodpractice")
 # !diagnostics on 
 # !diagnostics level=all
 ```
+
+```{r run-code}
+setwd("path_disabled_src/")
+table_files <- dir(".", pattern = "\\.*\\.R$")
+
+for (i in table_files) {
+  cat("\n]n***",i,"***\n\n")
+  try(source(file = i, echo = TRUE, verbose = TRUE))
+}
+```
