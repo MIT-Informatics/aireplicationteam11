@@ -1,22 +1,27 @@
+---
+title: "computational_reproducibility"
+format:
+  html:
+    embed-resources: true
+    code-fold: true
+    code-tools: true
+editor: visual
+---
+
 # Code checks
 
 ```{r setup}
-library(conflicted)
 library(tidyverse)
 library(magrittr, include.only="%<>%")
 ```
 
 # Code Checks
 
-```{r code-checks}
+```{r code-check-tools}
 requireNamespace("codetools")
 requireNamespace("lintr")
 requireNamespace("goodpractice")
 
 # !diagnostics on 
 # !diagnostics level=all
-
-
-
-
 ```
