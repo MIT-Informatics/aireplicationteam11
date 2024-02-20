@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>computational_reproducibilitye</title>
+<title>computational_reproducibility</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -3023,7 +3023,7 @@ vertical-align: -.125em;
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">computational_reproducibilitye</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+<div class="quarto-title-block"><div><h1 class="title">computational_reproducibility</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
 </div>
 
 
@@ -3199,6 +3199,205 @@ Observations                      6,580                 6,555        6,588    6,
 Adjusted R2                      -0.2192               -0.2348      -0.1687  -0.1792 
 =====================================================================================
 Note:                                                     *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
+</div>
+</div>
+</section>
+<section id="robustness--alternate-computation" class="level1">
+<h1>Robustness- Alternate Computation</h1>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>altSHOW3 <span class="ot">&lt;-</span> lfe<span class="sc">::</span> <span class="fu">felm</span>(show <span class="sc">~</span> ofcolor <span class="sc">+</span> w2012pc_Ad <span class="sc">+</span> b2012pc_Ad <span class="sc">+</span> a2012pc_Ad <span class="sc">+</span> hisp2012pc_Ad <span class="sc">+</span> logAdPrice <span class="sc">|</span> CONTROL <span class="sc">+</span> SEQUENCE.x <span class="sc">+</span> month <span class="sc">+</span> HCITY <span class="sc">+</span> market <span class="sc">+</span> ARELATE2 <span class="sc">+</span> HHMTYPE <span class="sc">+</span> SAPPTAM <span class="sc">+</span> TSEX.x <span class="sc">+</span> THHEGAI <span class="sc">+</span> TPEGAI <span class="sc">+</span> THIGHEDU <span class="sc">+</span> TCURTENR <span class="sc">+</span>  ALGNCUR <span class="sc">+</span> AELNG1 <span class="sc">+</span> DPMTEXP <span class="sc">+</span> AMOVERS <span class="sc">+</span> age <span class="sc">+</span> ALEASETP <span class="sc">+</span> ACAROWN<span class="sc">|</span> <span class="dv">0</span> <span class="sc">|</span>CONTROL, <span class="at">data  =</span> recs_trial_final, <span class="at">cmethod=</span><span class="st">&quot;cgm2&quot;</span>, <span class="at">psdef=</span><span class="cn">FALSE</span>, <span class="at">exactDOF=</span><span class="cn">TRUE</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>altSHOW3_ <span class="ot">&lt;-</span> lfe<span class="sc">::</span><span class="fu">felm</span>(show <span class="sc">~</span> APRACE <span class="sc">+</span> w2012pc_Ad <span class="sc">+</span> b2012pc_Ad <span class="sc">+</span> a2012pc_Ad <span class="sc">+</span> hisp2012pc_Ad <span class="sc">+</span> logAdPrice <span class="sc">|</span> CONTROL <span class="sc">+</span> SEQUENCE.x <span class="sc">+</span> month <span class="sc">+</span> HCITY <span class="sc">+</span> market <span class="sc">+</span> ARELATE2 <span class="sc">+</span> HHMTYPE <span class="sc">+</span> SAPPTAM <span class="sc">+</span> TSEX.x <span class="sc">+</span> THHEGAI <span class="sc">+</span> TPEGAI <span class="sc">+</span> THIGHEDU <span class="sc">+</span> TCURTENR <span class="sc">+</span>  ALGNCUR <span class="sc">+</span> AELNG1 <span class="sc">+</span> DPMTEXP <span class="sc">+</span> AMOVERS <span class="sc">+</span> age <span class="sc">+</span> ALEASETP <span class="sc">+</span> ACAROWN<span class="sc">|</span> <span class="dv">0</span> <span class="sc">|</span>CONTROL, <span class="at">data  =</span> recs_trial_final, <span class="at">cmethod=</span><span class="st">&quot;cgm2&quot;</span>, <span class="at">psdef=</span><span class="cn">FALSE</span>, <span class="at">exactDOF=</span><span class="cn">TRUE</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># estimated in feols (conversion through lme2fixest package)</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>feSHOW3 <span class="ot">&lt;-</span> fixest<span class="sc">::</span><span class="fu">feols</span>(show <span class="sc">~</span> ofcolor <span class="sc">+</span> w2012pc_Ad <span class="sc">+</span> b2012pc_Ad <span class="sc">+</span> a2012pc_Ad <span class="sc">+</span> hisp2012pc_Ad <span class="sc">+</span> logAdPrice <span class="sc">|</span> CONTROL <span class="sc">+</span> SEQUENCE.x <span class="sc">+</span> month <span class="sc">+</span> HCITY <span class="sc">+</span> market <span class="sc">+</span> ARELATE2 <span class="sc">+</span> HHMTYPE <span class="sc">+</span> SAPPTAM <span class="sc">+</span> TSEX.x <span class="sc">+</span> THHEGAI <span class="sc">+</span> TPEGAI <span class="sc">+</span> THIGHEDU <span class="sc">+</span> TCURTENR <span class="sc">+</span>  ALGNCUR <span class="sc">+</span> AELNG1 <span class="sc">+</span> DPMTEXP <span class="sc">+</span> AMOVERS <span class="sc">+</span> age <span class="sc">+</span> ALEASETP <span class="sc">+</span> ACAROWN, <span class="at">cluster =</span> <span class="sc">~</span>CONTROL, <span class="at">data  =</span> recs_trial_final)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>NOTE: 471 observations removed because of NA values (LHS: 112, RHS: 29, Fixed-effects: 357).</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>feSHOW3_ <span class="ot">&lt;-</span> fixest<span class="sc">::</span><span class="fu">feols</span>(show <span class="sc">~</span> APRACE <span class="sc">+</span> w2012pc_Ad <span class="sc">+</span> b2012pc_Ad <span class="sc">+</span> a2012pc_Ad <span class="sc">+</span> hisp2012pc_Ad <span class="sc">+</span> logAdPrice <span class="sc">|</span> CONTROL <span class="sc">+</span> SEQUENCE.x <span class="sc">+</span> month <span class="sc">+</span> HCITY <span class="sc">+</span> market <span class="sc">+</span> ARELATE2 <span class="sc">+</span> HHMTYPE <span class="sc">+</span> SAPPTAM <span class="sc">+</span> TSEX.x <span class="sc">+</span> THHEGAI <span class="sc">+</span> TPEGAI <span class="sc">+</span> THIGHEDU <span class="sc">+</span> TCURTENR <span class="sc">+</span>  ALGNCUR <span class="sc">+</span> AELNG1 <span class="sc">+</span> DPMTEXP <span class="sc">+</span> AMOVERS <span class="sc">+</span> age <span class="sc">+</span> ALEASETP <span class="sc">+</span> ACAROWN, <span class="at">cluster =</span> <span class="sc">~</span>CONTROL, <span class="at">data  =</span> recs_trial_final)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>NOTE: 471 observations removed because of NA values (LHS: 112, RHS: 29, Fixed-effects: 357).</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(SHOW3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+   lfe::felm(formula = show ~ ofcolor + w2012pc_Ad + b2012pc_Ad +      a2012pc_Ad + hisp2012pc_Ad + logAdPrice | CONTROL + SEQUENCE.x +      month + HCITY + market + ARELATE2 + HHMTYPE + SAPPTAM + TSEX.x +      THHEGAI + TPEGAI + THIGHEDU + TCURTENR + ALGNCUR + AELNG1 +      DPMTEXP + AMOVERS + age + ALEASETP + ACAROWN | 0 | CONTROL,      data = recs_trial_final) 
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-13.9039  -0.3846   0.0000   0.3688  25.6638 
+
+Coefficients:
+              Estimate Cluster s.e. t value Pr(&gt;|t|)
+ofcolor1       -0.1419       0.1987  -0.714    0.475
+w2012pc_Ad      0.9611       2.1704   0.443    0.658
+b2012pc_Ad     -0.3601       2.1571  -0.167    0.867
+a2012pc_Ad      1.9765       2.0365   0.971    0.332
+hisp2012pc_Ad   1.9320       2.0725   0.932    0.351
+logAdPrice      0.2417       0.1537   1.573    0.116
+
+Residual standard error: 3.373 on 1447 degrees of freedom
+  (471 observations deleted due to missingness)
+Multiple R-squared(full model): 0.7274   Adjusted R-squared: -0.2348 
+Multiple R-squared(proj model): 0.003133   Adjusted R-squared: -3.515 
+F-statistic(full model, *iid*):0.7559 on 5107 and 1447 DF, p-value: 1 
+F-statistic(proj model): 1.178 on 6 and 1447 DF, p-value: 0.3151 
+*** Standard errors may be too high due to more than 2 groups and exactDOF=FALSE</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(SHOW3_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+   lfe::felm(formula = show ~ APRACE + w2012pc_Ad + b2012pc_Ad +      a2012pc_Ad + hisp2012pc_Ad + logAdPrice | CONTROL + SEQUENCE.x +      month + HCITY + market + ARELATE2 + HHMTYPE + SAPPTAM + TSEX.x +      THHEGAI + TPEGAI + THIGHEDU + TCURTENR + ALGNCUR + AELNG1 +      DPMTEXP + AMOVERS + age + ALEASETP + ACAROWN | 0 | CONTROL,      data = recs_trial_final) 
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-13.8944  -0.3726   0.0000   0.3524  25.5995 
+
+Coefficients:
+              Estimate Cluster s.e. t value Pr(&gt;|t|)  
+APRACE2       -0.16896      0.27067  -0.624   0.5326  
+APRACE3       -0.13038      0.24741  -0.527   0.5983  
+APRACE4        0.08332      0.24648   0.338   0.7354  
+APRACE5        1.68220      0.85249   1.973   0.0487 *
+w2012pc_Ad     0.72051      2.14180   0.336   0.7366  
+b2012pc_Ad    -0.58122      2.12018  -0.274   0.7840  
+a2012pc_Ad     1.77916      2.01896   0.881   0.3783  
+hisp2012pc_Ad  1.60921      2.03513   0.791   0.4292  
+logAdPrice     0.23224      0.15223   1.526   0.1273  
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 3.373 on 1444 degrees of freedom
+  (471 observations deleted due to missingness)
+Multiple R-squared(full model): 0.7279   Adjusted R-squared: -0.2348 
+Multiple R-squared(proj model): 0.005252   Adjusted R-squared: -3.515 
+F-statistic(full model, *iid*):0.7561 on 5110 and 1444 DF, p-value: 1 
+F-statistic(proj model): 1.233 on 9 and 1444 DF, p-value: 0.2702 
+*** Standard errors may be too high due to more than 2 groups and exactDOF=FALSE</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(altSHOW3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+   lfe::felm(formula = show ~ ofcolor + w2012pc_Ad + b2012pc_Ad +      a2012pc_Ad + hisp2012pc_Ad + logAdPrice | CONTROL + SEQUENCE.x +      month + HCITY + market + ARELATE2 + HHMTYPE + SAPPTAM + TSEX.x +      THHEGAI + TPEGAI + THIGHEDU + TCURTENR + ALGNCUR + AELNG1 +      DPMTEXP + AMOVERS + age + ALEASETP + ACAROWN | 0 | CONTROL,      data = recs_trial_final, exactDOF = TRUE, cmethod = &quot;cgm2&quot;,      psdef = FALSE) 
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-13.9039  -0.3846   0.0000   0.3688  25.6638 
+
+Coefficients:
+              Estimate Cluster s.e. t value Pr(&gt;|t|)
+ofcolor1       -0.1419       0.1987  -0.714    0.475
+w2012pc_Ad      0.9611       2.1704   0.443    0.658
+b2012pc_Ad     -0.3601       2.1571  -0.167    0.867
+a2012pc_Ad      1.9765       2.0365   0.971    0.332
+hisp2012pc_Ad   1.9320       2.0725   0.932    0.351
+logAdPrice      0.2417       0.1537   1.573    0.116
+
+Residual standard error: 2.625 on 2389 degrees of freedom
+  (471 observations deleted due to missingness)
+Multiple R-squared(full model): 0.7274   Adjusted R-squared: 0.2521 
+Multiple R-squared(proj model): 0.003133   Adjusted R-squared: -1.735 
+F-statistic(full model, *iid*): 1.53 on 4165 and 2389 DF, p-value: &lt; 2.2e-16 
+F-statistic(proj model): 1.178 on 6 and 2389 DF, p-value: 0.3148 </code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(altSHOW3_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+   lfe::felm(formula = show ~ APRACE + w2012pc_Ad + b2012pc_Ad +      a2012pc_Ad + hisp2012pc_Ad + logAdPrice | CONTROL + SEQUENCE.x +      month + HCITY + market + ARELATE2 + HHMTYPE + SAPPTAM + TSEX.x +      THHEGAI + TPEGAI + THIGHEDU + TCURTENR + ALGNCUR + AELNG1 +      DPMTEXP + AMOVERS + age + ALEASETP + ACAROWN | 0 | CONTROL,      data = recs_trial_final, exactDOF = TRUE, cmethod = &quot;cgm2&quot;,      psdef = FALSE) 
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-13.8944  -0.3726   0.0000   0.3524  25.5995 
+
+Coefficients:
+              Estimate Cluster s.e. t value Pr(&gt;|t|)  
+APRACE2       -0.16896      0.27067  -0.624   0.5325  
+APRACE3       -0.13038      0.24741  -0.527   0.5983  
+APRACE4        0.08332      0.24648   0.338   0.7354  
+APRACE5        1.68220      0.85249   1.973   0.0486 *
+w2012pc_Ad     0.72051      2.14180   0.336   0.7366  
+b2012pc_Ad    -0.58122      2.12018  -0.274   0.7840  
+a2012pc_Ad     1.77916      2.01896   0.881   0.3783  
+hisp2012pc_Ad  1.60921      2.03513   0.791   0.4292  
+logAdPrice     0.23224      0.15223   1.526   0.1272  
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 2.624 on 2386 degrees of freedom
+  (471 observations deleted due to missingness)
+Multiple R-squared(full model): 0.7279   Adjusted R-squared: 0.2527 
+Multiple R-squared(proj model): 0.005252   Adjusted R-squared: -1.732 
+F-statistic(full model, *iid*):1.532 on 4168 and 2386 DF, p-value: &lt; 2.2e-16 
+F-statistic(proj model): 1.233 on 9 and 2386 DF, p-value: 0.2698 </code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(feSHOW3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>OLS estimation, Dep. Var.: show
+Observations: 6,555 
+Fixed-effects: CONTROL: 3,514,  SEQUENCE.x: 2,  month: 12,  HCITY: 1,406,  market: 29,  ARELATE2: 4,  HHMTYPE: 6,  SAPPTAM: 3,  TSEX.x: 2,  THHEGAI: 12,  TPEGAI: 9,  THIGHEDU: 12,  TCURTENR: 4,  ALGNCUR: 14,  AELNG1: 14,  DPMTEXP: 4,  AMOVERS: 10,  age: 60,  ALEASETP: 2,  ACAROWN: 2
+Standard-errors: Clustered (CONTROL) 
+               Estimate Std. Error   t value Pr(&gt;|t|) 
+ofcolor1      -0.141925   0.228360 -0.621496  0.53431 
+w2012pc_Ad     0.961072   2.493381  0.385449  0.69993 
+b2012pc_Ad    -0.360209   2.477976 -0.145364  0.88443 
+a2012pc_Ad     1.976445   2.339420  0.844844  0.39826 
+hisp2012pc_Ad  1.932025   2.381304  0.811331  0.41723 
+logAdPrice     0.241710   0.176585  1.368804  0.17115 
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+RMSE: 1.58478     Adj. R2: -0.234846
+                Within R2:  0.003133</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(feSHOW3_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>OLS estimation, Dep. Var.: show
+Observations: 6,555 
+Fixed-effects: CONTROL: 3,514,  SEQUENCE.x: 2,  month: 12,  HCITY: 1,406,  market: 29,  ARELATE2: 4,  HHMTYPE: 6,  SAPPTAM: 3,  TSEX.x: 2,  THHEGAI: 12,  TPEGAI: 9,  THIGHEDU: 12,  TCURTENR: 4,  ALGNCUR: 14,  AELNG1: 14,  DPMTEXP: 4,  AMOVERS: 10,  age: 60,  ALEASETP: 2,  ACAROWN: 2
+Standard-errors: Clustered (CONTROL) 
+               Estimate Std. Error   t value Pr(&gt;|t|)    
+APRACE2       -0.168956   0.311010 -0.543249  0.58699    
+APRACE3       -0.130386   0.284288 -0.458642  0.64652    
+APRACE4        0.083322   0.283227  0.294188  0.76863    
+APRACE5        1.682208   0.979590  1.717258  0.08602 .  
+w2012pc_Ad     0.720444   2.460600  0.292792  0.76970    
+b2012pc_Ad    -0.581341   2.435757 -0.238670  0.81138    
+a2012pc_Ad     1.779113   2.319352  0.767073  0.44309    
+hisp2012pc_Ad  1.609261   2.338488  0.688163  0.49140    
+logAdPrice     0.232244   0.174918  1.327731  0.18435    
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+RMSE: 1.58309     Adj. R2: -0.234781
+                Within R2:  0.005252</code></pre>
 </div>
 </div>
 <!-- -->
@@ -3491,131 +3690,155 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class>
-<div class="sourceCode" id="cb9" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> &quot;computational_reproducibilitye&quot;</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co">    embed-resources: true</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: true</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="an">editor:</span><span class="co"> visual</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="fu"># Computational Reproducibility</span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>Authors table<span class="al">![](figs/table5_orig.png)</span></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>Extracted from Table5...R file.</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>Original code listed many more libraries, but did not use them.</span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup}</span></span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="fu">requireNamespace</span>(<span class="st">&quot;stargazer&quot;</span>)</span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="fu">requireNamespace</span>(<span class="st">&quot;lfe&quot;</span>)</span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>Modfied to reference functions through namespace, rather than load all libraries, and to reference data through path, rather than to change wd. Changed output of stargazer to plain text so it is included in report automatically.</span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a><span class="in">```{r table5}</span></span>
-<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>data.dir <span class="ot">&lt;-</span> <span class="st">&quot;authors_replication/HuD_Replication/Final Data Sets/&quot;</span></span>
-<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a><span class="do">## Housing Search  ######################################################################################################</span></span>
-<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a><span class="co">#Preamble</span></span>
-<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Unless Otherwise Specified, Model Sequence is as follows:</span></span>
-<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Model 1: treatment effect conditional on advertisement price</span></span>
-<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Model 2: treatment effect also conditional on level of treatment outcome in advertised listing</span></span>
-<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Model 3: treatment effect also conditional on racial composition of block group of advertised listing</span></span>
-<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Model 4: treatment effect also conditional on racial composition of block group of recommended listing</span></span>
-<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Model 5: treatment effect also conditional on price of recommended home</span></span>
-<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data  </span></span>
-<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a>recs_trial_final <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">file.path</span>(data.dir,<span class="st">&quot;adsprocessed_JPE.rds&quot;</span>))</span>
-<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a><span class="co">#construct separate indicators for market and control</span></span>
-<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a>recs_trial_final<span class="sc">$</span>market <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fu">sapply</span>(<span class="fu">strsplit</span>(<span class="fu">as.character</span>(recs_trial_final<span class="sc">$</span>CONTROL), <span class="st">&quot;-&quot;</span>), <span class="st">`</span><span class="at">[</span><span class="st">`</span>, <span class="dv">1</span>))</span>
-<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a>recs_trial_final<span class="sc">$</span>CONTROL <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(recs_trial_final<span class="sc">$</span>CONTROL)</span>
-<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a>recs_trial_final<span class="sc">$</span>show <span class="ot">&lt;-</span> recs_trial_final<span class="sc">$</span>STOTUNIT</span>
-<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a>recs_trial_final<span class="sc">$</span>show[recs_trial_final<span class="sc">$</span>STOTUNIT<span class="sc">&lt;</span><span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
-<span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a><span class="co">#construct indicators for race groups</span></span>
-<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a>recs_trial_final<span class="sc">$</span>ofcolor <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb9-56"><a href="#cb9-56" aria-hidden="true" tabindex="-1"></a>recs_trial_final<span class="sc">$</span>ofcolor[recs_trial_final<span class="sc">$</span>APRACE<span class="sc">==</span><span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb9-57"><a href="#cb9-57" aria-hidden="true" tabindex="-1"></a>recs_trial_final<span class="sc">$</span>ofcolor[recs_trial_final<span class="sc">$</span>APRACE<span class="sc">==</span><span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb9-58"><a href="#cb9-58" aria-hidden="true" tabindex="-1"></a>recs_trial_final<span class="sc">$</span>ofcolor[recs_trial_final<span class="sc">$</span>APRACE<span class="sc">==</span><span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb9-59"><a href="#cb9-59" aria-hidden="true" tabindex="-1"></a>recs_trial_final<span class="sc">$</span>ofcolor <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(recs_trial_final<span class="sc">$</span>ofcolor)</span>
-<span id="cb9-60"><a href="#cb9-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-61"><a href="#cb9-61" aria-hidden="true" tabindex="-1"></a>recs_trial_final<span class="sc">$</span>count<span class="ot">=</span><span class="dv">1</span></span>
-<span id="cb9-62"><a href="#cb9-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-63"><a href="#cb9-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-64"><a href="#cb9-64" aria-hidden="true" tabindex="-1"></a><span class="co"># Dicrimination and Showings</span></span>
-<span id="cb9-65"><a href="#cb9-65" aria-hidden="true" tabindex="-1"></a><span class="co"># STEERING AND white NEIGHBORHOOD </span></span>
-<span id="cb9-66"><a href="#cb9-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-67"><a href="#cb9-67" aria-hidden="true" tabindex="-1"></a>SHOW1 <span class="ot">&lt;-</span> lfe<span class="sc">::</span><span class="fu">felm</span>(show <span class="sc">~</span> ofcolor <span class="sc">|</span> CONTROL <span class="sc">+</span> SEQUENCE.x <span class="sc">+</span> month <span class="sc">+</span> HCITY <span class="sc">+</span> market <span class="sc">+</span> ARELATE2 <span class="sc">+</span> HHMTYPE <span class="sc">+</span> SAPPTAM <span class="sc">+</span> TSEX.x <span class="sc">+</span> THHEGAI <span class="sc">+</span> TPEGAI <span class="sc">+</span> THIGHEDU <span class="sc">+</span> TCURTENR <span class="sc">+</span>  ALGNCUR <span class="sc">+</span> AELNG1 <span class="sc">+</span> DPMTEXP <span class="sc">+</span> AMOVERS <span class="sc">+</span> age <span class="sc">+</span> ALEASETP <span class="sc">+</span> ACAROWN<span class="sc">|</span> <span class="dv">0</span> <span class="sc">|</span> CONTROL, <span class="at">data  =</span> recs_trial_final)</span>
-<span id="cb9-68"><a href="#cb9-68" aria-hidden="true" tabindex="-1"></a>SHOW3 <span class="ot">&lt;-</span> lfe<span class="sc">::</span> <span class="fu">felm</span>(show <span class="sc">~</span> ofcolor <span class="sc">+</span> w2012pc_Ad <span class="sc">+</span> b2012pc_Ad <span class="sc">+</span> a2012pc_Ad <span class="sc">+</span> hisp2012pc_Ad <span class="sc">+</span> logAdPrice <span class="sc">|</span> CONTROL <span class="sc">+</span> SEQUENCE.x <span class="sc">+</span> month <span class="sc">+</span> HCITY <span class="sc">+</span> market <span class="sc">+</span> ARELATE2 <span class="sc">+</span> HHMTYPE <span class="sc">+</span> SAPPTAM <span class="sc">+</span> TSEX.x <span class="sc">+</span> THHEGAI <span class="sc">+</span> TPEGAI <span class="sc">+</span> THIGHEDU <span class="sc">+</span> TCURTENR <span class="sc">+</span>  ALGNCUR <span class="sc">+</span> AELNG1 <span class="sc">+</span> DPMTEXP <span class="sc">+</span> AMOVERS <span class="sc">+</span> age <span class="sc">+</span> ALEASETP <span class="sc">+</span> ACAROWN<span class="sc">|</span> <span class="dv">0</span> <span class="sc">|</span>CONTROL, <span class="at">data  =</span> recs_trial_final)</span>
-<span id="cb9-69"><a href="#cb9-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-70"><a href="#cb9-70" aria-hidden="true" tabindex="-1"></a>SHOW1_ <span class="ot">&lt;-</span> lfe<span class="sc">::</span><span class="fu">felm</span>(show <span class="sc">~</span> APRACE <span class="sc">|</span> CONTROL <span class="sc">+</span> SEQUENCE.x <span class="sc">+</span> month <span class="sc">+</span> HCITY <span class="sc">+</span> market <span class="sc">+</span> ARELATE2 <span class="sc">+</span> HHMTYPE <span class="sc">+</span> SAPPTAM <span class="sc">+</span> TSEX.x <span class="sc">+</span> THHEGAI <span class="sc">+</span> TPEGAI <span class="sc">+</span> THIGHEDU <span class="sc">+</span> TCURTENR <span class="sc">+</span>  ALGNCUR <span class="sc">+</span> AELNG1 <span class="sc">+</span> DPMTEXP <span class="sc">+</span> AMOVERS <span class="sc">+</span> age <span class="sc">+</span> ALEASETP <span class="sc">+</span> ACAROWN<span class="sc">|</span> <span class="dv">0</span> <span class="sc">|</span> CONTROL, <span class="at">data  =</span> recs_trial_final)</span>
-<span id="cb9-71"><a href="#cb9-71" aria-hidden="true" tabindex="-1"></a>SHOW3_ <span class="ot">&lt;-</span> lfe<span class="sc">::</span><span class="fu">felm</span>(show <span class="sc">~</span> APRACE <span class="sc">+</span> w2012pc_Ad <span class="sc">+</span> b2012pc_Ad <span class="sc">+</span> a2012pc_Ad <span class="sc">+</span> hisp2012pc_Ad <span class="sc">+</span> logAdPrice <span class="sc">|</span> CONTROL <span class="sc">+</span> SEQUENCE.x <span class="sc">+</span> month <span class="sc">+</span> HCITY <span class="sc">+</span> market <span class="sc">+</span> ARELATE2 <span class="sc">+</span> HHMTYPE <span class="sc">+</span> SAPPTAM <span class="sc">+</span> TSEX.x <span class="sc">+</span> THHEGAI <span class="sc">+</span> TPEGAI <span class="sc">+</span> THIGHEDU <span class="sc">+</span> TCURTENR <span class="sc">+</span>  ALGNCUR <span class="sc">+</span> AELNG1 <span class="sc">+</span> DPMTEXP <span class="sc">+</span> AMOVERS <span class="sc">+</span> age <span class="sc">+</span> ALEASETP <span class="sc">+</span> ACAROWN<span class="sc">|</span> <span class="dv">0</span> <span class="sc">|</span>CONTROL, <span class="at">data  =</span> recs_trial_final)</span>
-<span id="cb9-72"><a href="#cb9-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-73"><a href="#cb9-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-74"><a href="#cb9-74" aria-hidden="true" tabindex="-1"></a><span class="do">##########################################################################################################################################################################</span></span>
-<span id="cb9-75"><a href="#cb9-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-76"><a href="#cb9-76" aria-hidden="true" tabindex="-1"></a><span class="co"># STEERING </span></span>
-<span id="cb9-77"><a href="#cb9-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-78"><a href="#cb9-78" aria-hidden="true" tabindex="-1"></a>recs_trial_final<span class="sc">$</span>home_av <span class="ot">&lt;-</span> recs_trial_final<span class="sc">$</span>SAVLBAD</span>
-<span id="cb9-79"><a href="#cb9-79" aria-hidden="true" tabindex="-1"></a>recs_trial_final<span class="sc">$</span>home_av[recs_trial_final<span class="sc">$</span>home_av<span class="sc">&lt;</span><span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
-<span id="cb9-80"><a href="#cb9-80" aria-hidden="true" tabindex="-1"></a>recs_trial_final<span class="sc">$</span>home_av[recs_trial_final<span class="sc">$</span>home_av<span class="sc">&gt;</span><span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb9-81"><a href="#cb9-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-82"><a href="#cb9-82" aria-hidden="true" tabindex="-1"></a>SHOWad1 <span class="ot">&lt;-</span> lfe<span class="sc">::</span><span class="fu">felm</span>(home_av <span class="sc">~</span> ofcolor <span class="sc">|</span> CONTROL <span class="sc">+</span> SEQUENCE.x <span class="sc">+</span> month <span class="sc">+</span> HCITY <span class="sc">+</span> market <span class="sc">+</span> ARELATE2 <span class="sc">+</span> HHMTYPE <span class="sc">+</span> SAPPTAM <span class="sc">+</span> TSEX.x <span class="sc">+</span> THHEGAI <span class="sc">+</span> TPEGAI <span class="sc">+</span> THIGHEDU <span class="sc">+</span> TCURTENR <span class="sc">+</span>  ALGNCUR <span class="sc">+</span> AELNG1 <span class="sc">+</span> DPMTEXP <span class="sc">+</span> AMOVERS <span class="sc">+</span> age <span class="sc">+</span> ALEASETP <span class="sc">+</span> ACAROWN<span class="sc">|</span> <span class="dv">0</span> <span class="sc">|</span> CONTROL, <span class="at">data  =</span> recs_trial_final)</span>
-<span id="cb9-83"><a href="#cb9-83" aria-hidden="true" tabindex="-1"></a>SHOWad3 <span class="ot">&lt;-</span> lfe<span class="sc">::</span><span class="fu">felm</span>(home_av <span class="sc">~</span> ofcolor <span class="sc">+</span> w2012pc_Ad <span class="sc">+</span> b2012pc_Ad <span class="sc">+</span> a2012pc_Ad <span class="sc">+</span> hisp2012pc_Ad <span class="sc">+</span> logAdPrice <span class="sc">|</span> CONTROL <span class="sc">+</span> SEQUENCE.x <span class="sc">+</span> month <span class="sc">+</span> HCITY <span class="sc">+</span> market <span class="sc">+</span> ARELATE2 <span class="sc">+</span> HHMTYPE <span class="sc">+</span> SAPPTAM <span class="sc">+</span> TSEX.x <span class="sc">+</span> THHEGAI <span class="sc">+</span> TPEGAI <span class="sc">+</span> THIGHEDU <span class="sc">+</span> TCURTENR <span class="sc">+</span>  ALGNCUR <span class="sc">+</span> AELNG1 <span class="sc">+</span> DPMTEXP <span class="sc">+</span> AMOVERS <span class="sc">+</span> age <span class="sc">+</span> ALEASETP <span class="sc">+</span> ACAROWN<span class="sc">|</span> <span class="dv">0</span> <span class="sc">|</span>CONTROL, <span class="at">data  =</span> recs_trial_final)</span>
-<span id="cb9-84"><a href="#cb9-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-85"><a href="#cb9-85" aria-hidden="true" tabindex="-1"></a>SHOWad1_ <span class="ot">&lt;-</span> lfe<span class="sc">::</span><span class="fu">felm</span>(home_av <span class="sc">~</span> APRACE <span class="sc">|</span> CONTROL <span class="sc">+</span> SEQUENCE.x <span class="sc">+</span> month <span class="sc">+</span> HCITY <span class="sc">+</span> market <span class="sc">+</span> ARELATE2 <span class="sc">+</span> HHMTYPE <span class="sc">+</span> SAPPTAM <span class="sc">+</span> TSEX.x <span class="sc">+</span> THHEGAI <span class="sc">+</span> TPEGAI <span class="sc">+</span> THIGHEDU <span class="sc">+</span> TCURTENR <span class="sc">+</span>  ALGNCUR <span class="sc">+</span> AELNG1 <span class="sc">+</span> DPMTEXP <span class="sc">+</span> AMOVERS <span class="sc">+</span> age <span class="sc">+</span> ALEASETP <span class="sc">+</span> ACAROWN<span class="sc">|</span> <span class="dv">0</span> <span class="sc">|</span> CONTROL, <span class="at">data  =</span> recs_trial_final)</span>
-<span id="cb9-86"><a href="#cb9-86" aria-hidden="true" tabindex="-1"></a>SHOWad3_ <span class="ot">&lt;-</span> lfe<span class="sc">::</span><span class="fu">felm</span>(home_av <span class="sc">~</span> APRACE <span class="sc">+</span> w2012pc_Ad <span class="sc">+</span> b2012pc_Ad <span class="sc">+</span> a2012pc_Ad <span class="sc">+</span> hisp2012pc_Ad <span class="sc">+</span> logAdPrice <span class="sc">|</span> CONTROL <span class="sc">+</span> SEQUENCE.x <span class="sc">+</span> month <span class="sc">+</span> HCITY <span class="sc">+</span> market <span class="sc">+</span> ARELATE2 <span class="sc">+</span> HHMTYPE <span class="sc">+</span> SAPPTAM <span class="sc">+</span> TSEX.x <span class="sc">+</span> THHEGAI <span class="sc">+</span> TPEGAI <span class="sc">+</span> THIGHEDU <span class="sc">+</span> TCURTENR <span class="sc">+</span>  ALGNCUR <span class="sc">+</span> AELNG1 <span class="sc">+</span> DPMTEXP <span class="sc">+</span> AMOVERS <span class="sc">+</span> age <span class="sc">+</span> ALEASETP <span class="sc">+</span> ACAROWN<span class="sc">|</span> <span class="dv">0</span> <span class="sc">|</span>CONTROL, <span class="at">data  =</span> recs_trial_final)</span>
-<span id="cb9-87"><a href="#cb9-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-88"><a href="#cb9-88" aria-hidden="true" tabindex="-1"></a><span class="do">### GENERATE TABLES</span></span>
-<span id="cb9-89"><a href="#cb9-89" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="st">&quot;tmp/&quot;</span></span>
-<span id="cb9-90"><a href="#cb9-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-91"><a href="#cb9-91" aria-hidden="true" tabindex="-1"></a><span class="do">###########Control Group Mean####################</span></span>
-<span id="cb9-92"><a href="#cb9-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-93"><a href="#cb9-93" aria-hidden="true" tabindex="-1"></a>stargazer<span class="sc">::</span><span class="fu">stargazer</span>(SHOW1, SHOW3, SHOWad1, SHOWad3,</span>
-<span id="cb9-94"><a href="#cb9-94" aria-hidden="true" tabindex="-1"></a>          <span class="at">type =</span> <span class="st">&quot;text&quot;</span>,</span>
-<span id="cb9-95"><a href="#cb9-95" aria-hidden="true" tabindex="-1"></a>          <span class="at">out =</span> <span class="fu">paste0</span>(out, <span class="st">&quot;HUM_tab5_JPE.r&quot;</span>),</span>
-<span id="cb9-96"><a href="#cb9-96" aria-hidden="true" tabindex="-1"></a>          <span class="at">title=</span><span class="st">&quot;Steering and Neighborhood Effects&quot;</span>,</span>
-<span id="cb9-97"><a href="#cb9-97" aria-hidden="true" tabindex="-1"></a>          <span class="at">model.numbers =</span> F,</span>
-<span id="cb9-98"><a href="#cb9-98" aria-hidden="true" tabindex="-1"></a>          <span class="at">keep =</span> <span class="fu">c</span>(<span class="st">&quot;ofcolor&quot;</span>),</span>
-<span id="cb9-99"><a href="#cb9-99" aria-hidden="true" tabindex="-1"></a>          <span class="at">covariate.labels =</span> <span class="fu">c</span>(<span class="st">&quot;Racial Minority&quot;</span>),</span>
-<span id="cb9-100"><a href="#cb9-100" aria-hidden="true" tabindex="-1"></a>          <span class="at">keep.stat=</span><span class="fu">c</span>(<span class="st">&quot;n&quot;</span>,<span class="st">&quot;adj.rsq&quot;</span>),</span>
-<span id="cb9-101"><a href="#cb9-101" aria-hidden="true" tabindex="-1"></a>          <span class="at">digits=</span><span class="dv">4</span>,<span class="at">digits.extra=</span><span class="dv">0</span>,<span class="at">no.space=</span>T,<span class="at">align=</span>T,<span class="at">model.names=</span>F,<span class="at">notes.append=</span>T,<span class="at">object.names=</span>F,</span>
-<span id="cb9-102"><a href="#cb9-102" aria-hidden="true" tabindex="-1"></a>          <span class="at">add.lines =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">&quot;ln(Price) Advert Home&quot;</span>,<span class="st">&quot;N&quot;</span>,<span class="st">&quot;Y&quot;</span>,<span class="st">&quot;N&quot;</span>,<span class="st">&quot;Y&quot;</span>),</span>
-<span id="cb9-103"><a href="#cb9-103" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">c</span>(<span class="st">&quot;Racial Comp Advert Home&quot;</span>,<span class="st">&quot;N&quot;</span>,<span class="st">&quot;Y&quot;</span>,<span class="st">&quot;N&quot;</span>,<span class="st">&quot;Y&quot;</span>)))</span>
-<span id="cb9-104"><a href="#cb9-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-105"><a href="#cb9-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-106"><a href="#cb9-106" aria-hidden="true" tabindex="-1"></a>stargazer<span class="sc">::</span><span class="fu">stargazer</span>(SHOW1_, SHOW3_, SHOWad1_, SHOWad3_,</span>
-<span id="cb9-107"><a href="#cb9-107" aria-hidden="true" tabindex="-1"></a>          <span class="at">type =</span> <span class="st">&quot;text&quot;</span>,</span>
-<span id="cb9-108"><a href="#cb9-108" aria-hidden="true" tabindex="-1"></a>          <span class="at">out =</span> <span class="fu">paste0</span>(out, <span class="st">&quot;HUM_tab5_JPE_.txt&quot;</span>),</span>
-<span id="cb9-109"><a href="#cb9-109" aria-hidden="true" tabindex="-1"></a>          <span class="at">title=</span><span class="st">&quot;Steering and Neighborhood Effects&quot;</span>,</span>
-<span id="cb9-110"><a href="#cb9-110" aria-hidden="true" tabindex="-1"></a>          <span class="at">dep.var.labels.include =</span> F,</span>
-<span id="cb9-111"><a href="#cb9-111" aria-hidden="true" tabindex="-1"></a>          <span class="at">column.labels =</span> <span class="fu">c</span>(<span class="st">&quot;Number of Recommendations&quot;</span>,<span class="st">&quot;Home Availability&quot;</span>),</span>
-<span id="cb9-112"><a href="#cb9-112" aria-hidden="true" tabindex="-1"></a>          <span class="at">model.numbers =</span> F,</span>
-<span id="cb9-113"><a href="#cb9-113" aria-hidden="true" tabindex="-1"></a>          <span class="at">keep =</span> <span class="fu">c</span>(<span class="st">&quot;APRACE&quot;</span>),</span>
-<span id="cb9-114"><a href="#cb9-114" aria-hidden="true" tabindex="-1"></a>          <span class="at">covariate.labels =</span> <span class="fu">c</span>(<span class="st">&quot;African American&quot;</span>,</span>
-<span id="cb9-115"><a href="#cb9-115" aria-hidden="true" tabindex="-1"></a>                               <span class="st">&quot;Hispanic&quot;</span>,</span>
-<span id="cb9-116"><a href="#cb9-116" aria-hidden="true" tabindex="-1"></a>                               <span class="st">&quot;Asian&quot;</span>,</span>
-<span id="cb9-117"><a href="#cb9-117" aria-hidden="true" tabindex="-1"></a>                               <span class="st">&quot;Other&quot;</span>),</span>
-<span id="cb9-118"><a href="#cb9-118" aria-hidden="true" tabindex="-1"></a>          <span class="at">keep.stat=</span><span class="fu">c</span>(<span class="st">&quot;n&quot;</span>,<span class="st">&quot;adj.rsq&quot;</span>),</span>
-<span id="cb9-119"><a href="#cb9-119" aria-hidden="true" tabindex="-1"></a>          <span class="at">digits=</span><span class="dv">4</span>,<span class="at">digits.extra=</span><span class="dv">0</span>,<span class="at">no.space=</span>T,<span class="at">align=</span>T,<span class="at">model.names=</span>F,<span class="at">notes.append=</span>T,<span class="at">object.names=</span>F,</span>
-<span id="cb9-120"><a href="#cb9-120" aria-hidden="true" tabindex="-1"></a>          <span class="at">add.lines =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">&quot;ln(Price) Advert Home&quot;</span>,<span class="st">&quot;N&quot;</span>,<span class="st">&quot;Y&quot;</span>,<span class="st">&quot;N&quot;</span>,<span class="st">&quot;Y&quot;</span>),</span>
-<span id="cb9-121"><a href="#cb9-121" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">c</span>(<span class="st">&quot;Racial Comp Advert Home&quot;</span>,<span class="st">&quot;N&quot;</span>,<span class="st">&quot;Y&quot;</span>,<span class="st">&quot;N&quot;</span>,<span class="st">&quot;Y&quot;</span>)))</span>
-<span id="cb9-122"><a href="#cb9-122" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-123"><a href="#cb9-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-124"><a href="#cb9-124" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-125"><a href="#cb9-125" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> &quot;computational_reproducibility&quot;</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="co">    embed-resources: true</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: true</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="an">editor:</span><span class="co"> visual</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a><span class="fu"># Computational Reproducibility</span></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>Authors table<span class="al">![](figs/table5_orig.png)</span></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>Extracted from Table5...R file.</span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>Original code listed many more libraries, but did not use them.</span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup}</span></span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a><span class="fu">requireNamespace</span>(<span class="st">&quot;stargazer&quot;</span>)</span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a><span class="fu">requireNamespace</span>(<span class="st">&quot;lfe&quot;</span>)</span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a>Modfied to reference functions through namespace, rather than load all libraries, and to reference data through path, rather than to change wd. Changed output of stargazer to plain text so it is included in report automatically.</span>
+<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a><span class="in">```{r table5}</span></span>
+<span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-28"><a href="#cb25-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-29"><a href="#cb25-29" aria-hidden="true" tabindex="-1"></a>data.dir <span class="ot">&lt;-</span> <span class="st">&quot;authors_replication/HuD_Replication/Final Data Sets/&quot;</span></span>
+<span id="cb25-30"><a href="#cb25-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-31"><a href="#cb25-31" aria-hidden="true" tabindex="-1"></a><span class="do">## Housing Search  ######################################################################################################</span></span>
+<span id="cb25-32"><a href="#cb25-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-33"><a href="#cb25-33" aria-hidden="true" tabindex="-1"></a><span class="co">#Preamble</span></span>
+<span id="cb25-34"><a href="#cb25-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-35"><a href="#cb25-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Unless Otherwise Specified, Model Sequence is as follows:</span></span>
+<span id="cb25-36"><a href="#cb25-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Model 1: treatment effect conditional on advertisement price</span></span>
+<span id="cb25-37"><a href="#cb25-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Model 2: treatment effect also conditional on level of treatment outcome in advertised listing</span></span>
+<span id="cb25-38"><a href="#cb25-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Model 3: treatment effect also conditional on racial composition of block group of advertised listing</span></span>
+<span id="cb25-39"><a href="#cb25-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Model 4: treatment effect also conditional on racial composition of block group of recommended listing</span></span>
+<span id="cb25-40"><a href="#cb25-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Model 5: treatment effect also conditional on price of recommended home</span></span>
+<span id="cb25-41"><a href="#cb25-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-42"><a href="#cb25-42" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data  </span></span>
+<span id="cb25-43"><a href="#cb25-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-44"><a href="#cb25-44" aria-hidden="true" tabindex="-1"></a>recs_trial_final <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">file.path</span>(data.dir,<span class="st">&quot;adsprocessed_JPE.rds&quot;</span>))</span>
+<span id="cb25-45"><a href="#cb25-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-46"><a href="#cb25-46" aria-hidden="true" tabindex="-1"></a><span class="co">#construct separate indicators for market and control</span></span>
+<span id="cb25-47"><a href="#cb25-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-48"><a href="#cb25-48" aria-hidden="true" tabindex="-1"></a>recs_trial_final<span class="sc">$</span>market <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fu">sapply</span>(<span class="fu">strsplit</span>(<span class="fu">as.character</span>(recs_trial_final<span class="sc">$</span>CONTROL), <span class="st">&quot;-&quot;</span>), <span class="st">`</span><span class="at">[</span><span class="st">`</span>, <span class="dv">1</span>))</span>
+<span id="cb25-49"><a href="#cb25-49" aria-hidden="true" tabindex="-1"></a>recs_trial_final<span class="sc">$</span>CONTROL <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(recs_trial_final<span class="sc">$</span>CONTROL)</span>
+<span id="cb25-50"><a href="#cb25-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-51"><a href="#cb25-51" aria-hidden="true" tabindex="-1"></a>recs_trial_final<span class="sc">$</span>show <span class="ot">&lt;-</span> recs_trial_final<span class="sc">$</span>STOTUNIT</span>
+<span id="cb25-52"><a href="#cb25-52" aria-hidden="true" tabindex="-1"></a>recs_trial_final<span class="sc">$</span>show[recs_trial_final<span class="sc">$</span>STOTUNIT<span class="sc">&lt;</span><span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb25-53"><a href="#cb25-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-54"><a href="#cb25-54" aria-hidden="true" tabindex="-1"></a><span class="co">#construct indicators for race groups</span></span>
+<span id="cb25-55"><a href="#cb25-55" aria-hidden="true" tabindex="-1"></a>recs_trial_final<span class="sc">$</span>ofcolor <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb25-56"><a href="#cb25-56" aria-hidden="true" tabindex="-1"></a>recs_trial_final<span class="sc">$</span>ofcolor[recs_trial_final<span class="sc">$</span>APRACE<span class="sc">==</span><span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb25-57"><a href="#cb25-57" aria-hidden="true" tabindex="-1"></a>recs_trial_final<span class="sc">$</span>ofcolor[recs_trial_final<span class="sc">$</span>APRACE<span class="sc">==</span><span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb25-58"><a href="#cb25-58" aria-hidden="true" tabindex="-1"></a>recs_trial_final<span class="sc">$</span>ofcolor[recs_trial_final<span class="sc">$</span>APRACE<span class="sc">==</span><span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb25-59"><a href="#cb25-59" aria-hidden="true" tabindex="-1"></a>recs_trial_final<span class="sc">$</span>ofcolor <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(recs_trial_final<span class="sc">$</span>ofcolor)</span>
+<span id="cb25-60"><a href="#cb25-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-61"><a href="#cb25-61" aria-hidden="true" tabindex="-1"></a>recs_trial_final<span class="sc">$</span>count<span class="ot">=</span><span class="dv">1</span></span>
+<span id="cb25-62"><a href="#cb25-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-63"><a href="#cb25-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-64"><a href="#cb25-64" aria-hidden="true" tabindex="-1"></a><span class="co"># Dicrimination and Showings</span></span>
+<span id="cb25-65"><a href="#cb25-65" aria-hidden="true" tabindex="-1"></a><span class="co"># STEERING AND white NEIGHBORHOOD </span></span>
+<span id="cb25-66"><a href="#cb25-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-67"><a href="#cb25-67" aria-hidden="true" tabindex="-1"></a>SHOW1 <span class="ot">&lt;-</span> lfe<span class="sc">::</span><span class="fu">felm</span>(show <span class="sc">~</span> ofcolor <span class="sc">|</span> CONTROL <span class="sc">+</span> SEQUENCE.x <span class="sc">+</span> month <span class="sc">+</span> HCITY <span class="sc">+</span> market <span class="sc">+</span> ARELATE2 <span class="sc">+</span> HHMTYPE <span class="sc">+</span> SAPPTAM <span class="sc">+</span> TSEX.x <span class="sc">+</span> THHEGAI <span class="sc">+</span> TPEGAI <span class="sc">+</span> THIGHEDU <span class="sc">+</span> TCURTENR <span class="sc">+</span>  ALGNCUR <span class="sc">+</span> AELNG1 <span class="sc">+</span> DPMTEXP <span class="sc">+</span> AMOVERS <span class="sc">+</span> age <span class="sc">+</span> ALEASETP <span class="sc">+</span> ACAROWN<span class="sc">|</span> <span class="dv">0</span> <span class="sc">|</span> CONTROL, <span class="at">data  =</span> recs_trial_final)</span>
+<span id="cb25-68"><a href="#cb25-68" aria-hidden="true" tabindex="-1"></a>SHOW3 <span class="ot">&lt;-</span> lfe<span class="sc">::</span> <span class="fu">felm</span>(show <span class="sc">~</span> ofcolor <span class="sc">+</span> w2012pc_Ad <span class="sc">+</span> b2012pc_Ad <span class="sc">+</span> a2012pc_Ad <span class="sc">+</span> hisp2012pc_Ad <span class="sc">+</span> logAdPrice <span class="sc">|</span> CONTROL <span class="sc">+</span> SEQUENCE.x <span class="sc">+</span> month <span class="sc">+</span> HCITY <span class="sc">+</span> market <span class="sc">+</span> ARELATE2 <span class="sc">+</span> HHMTYPE <span class="sc">+</span> SAPPTAM <span class="sc">+</span> TSEX.x <span class="sc">+</span> THHEGAI <span class="sc">+</span> TPEGAI <span class="sc">+</span> THIGHEDU <span class="sc">+</span> TCURTENR <span class="sc">+</span>  ALGNCUR <span class="sc">+</span> AELNG1 <span class="sc">+</span> DPMTEXP <span class="sc">+</span> AMOVERS <span class="sc">+</span> age <span class="sc">+</span> ALEASETP <span class="sc">+</span> ACAROWN<span class="sc">|</span> <span class="dv">0</span> <span class="sc">|</span>CONTROL, <span class="at">data  =</span> recs_trial_final)</span>
+<span id="cb25-69"><a href="#cb25-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-70"><a href="#cb25-70" aria-hidden="true" tabindex="-1"></a>SHOW1_ <span class="ot">&lt;-</span> lfe<span class="sc">::</span><span class="fu">felm</span>(show <span class="sc">~</span> APRACE <span class="sc">|</span> CONTROL <span class="sc">+</span> SEQUENCE.x <span class="sc">+</span> month <span class="sc">+</span> HCITY <span class="sc">+</span> market <span class="sc">+</span> ARELATE2 <span class="sc">+</span> HHMTYPE <span class="sc">+</span> SAPPTAM <span class="sc">+</span> TSEX.x <span class="sc">+</span> THHEGAI <span class="sc">+</span> TPEGAI <span class="sc">+</span> THIGHEDU <span class="sc">+</span> TCURTENR <span class="sc">+</span>  ALGNCUR <span class="sc">+</span> AELNG1 <span class="sc">+</span> DPMTEXP <span class="sc">+</span> AMOVERS <span class="sc">+</span> age <span class="sc">+</span> ALEASETP <span class="sc">+</span> ACAROWN<span class="sc">|</span> <span class="dv">0</span> <span class="sc">|</span> CONTROL, <span class="at">data  =</span> recs_trial_final)</span>
+<span id="cb25-71"><a href="#cb25-71" aria-hidden="true" tabindex="-1"></a>SHOW3_ <span class="ot">&lt;-</span> lfe<span class="sc">::</span><span class="fu">felm</span>(show <span class="sc">~</span> APRACE <span class="sc">+</span> w2012pc_Ad <span class="sc">+</span> b2012pc_Ad <span class="sc">+</span> a2012pc_Ad <span class="sc">+</span> hisp2012pc_Ad <span class="sc">+</span> logAdPrice <span class="sc">|</span> CONTROL <span class="sc">+</span> SEQUENCE.x <span class="sc">+</span> month <span class="sc">+</span> HCITY <span class="sc">+</span> market <span class="sc">+</span> ARELATE2 <span class="sc">+</span> HHMTYPE <span class="sc">+</span> SAPPTAM <span class="sc">+</span> TSEX.x <span class="sc">+</span> THHEGAI <span class="sc">+</span> TPEGAI <span class="sc">+</span> THIGHEDU <span class="sc">+</span> TCURTENR <span class="sc">+</span>  ALGNCUR <span class="sc">+</span> AELNG1 <span class="sc">+</span> DPMTEXP <span class="sc">+</span> AMOVERS <span class="sc">+</span> age <span class="sc">+</span> ALEASETP <span class="sc">+</span> ACAROWN<span class="sc">|</span> <span class="dv">0</span> <span class="sc">|</span>CONTROL, <span class="at">data  =</span> recs_trial_final)</span>
+<span id="cb25-72"><a href="#cb25-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-73"><a href="#cb25-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-74"><a href="#cb25-74" aria-hidden="true" tabindex="-1"></a><span class="do">##########################################################################################################################################################################</span></span>
+<span id="cb25-75"><a href="#cb25-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-76"><a href="#cb25-76" aria-hidden="true" tabindex="-1"></a><span class="co"># STEERING </span></span>
+<span id="cb25-77"><a href="#cb25-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-78"><a href="#cb25-78" aria-hidden="true" tabindex="-1"></a>recs_trial_final<span class="sc">$</span>home_av <span class="ot">&lt;-</span> recs_trial_final<span class="sc">$</span>SAVLBAD</span>
+<span id="cb25-79"><a href="#cb25-79" aria-hidden="true" tabindex="-1"></a>recs_trial_final<span class="sc">$</span>home_av[recs_trial_final<span class="sc">$</span>home_av<span class="sc">&lt;</span><span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb25-80"><a href="#cb25-80" aria-hidden="true" tabindex="-1"></a>recs_trial_final<span class="sc">$</span>home_av[recs_trial_final<span class="sc">$</span>home_av<span class="sc">&gt;</span><span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb25-81"><a href="#cb25-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-82"><a href="#cb25-82" aria-hidden="true" tabindex="-1"></a>SHOWad1 <span class="ot">&lt;-</span> lfe<span class="sc">::</span><span class="fu">felm</span>(home_av <span class="sc">~</span> ofcolor <span class="sc">|</span> CONTROL <span class="sc">+</span> SEQUENCE.x <span class="sc">+</span> month <span class="sc">+</span> HCITY <span class="sc">+</span> market <span class="sc">+</span> ARELATE2 <span class="sc">+</span> HHMTYPE <span class="sc">+</span> SAPPTAM <span class="sc">+</span> TSEX.x <span class="sc">+</span> THHEGAI <span class="sc">+</span> TPEGAI <span class="sc">+</span> THIGHEDU <span class="sc">+</span> TCURTENR <span class="sc">+</span>  ALGNCUR <span class="sc">+</span> AELNG1 <span class="sc">+</span> DPMTEXP <span class="sc">+</span> AMOVERS <span class="sc">+</span> age <span class="sc">+</span> ALEASETP <span class="sc">+</span> ACAROWN<span class="sc">|</span> <span class="dv">0</span> <span class="sc">|</span> CONTROL, <span class="at">data  =</span> recs_trial_final)</span>
+<span id="cb25-83"><a href="#cb25-83" aria-hidden="true" tabindex="-1"></a>SHOWad3 <span class="ot">&lt;-</span> lfe<span class="sc">::</span><span class="fu">felm</span>(home_av <span class="sc">~</span> ofcolor <span class="sc">+</span> w2012pc_Ad <span class="sc">+</span> b2012pc_Ad <span class="sc">+</span> a2012pc_Ad <span class="sc">+</span> hisp2012pc_Ad <span class="sc">+</span> logAdPrice <span class="sc">|</span> CONTROL <span class="sc">+</span> SEQUENCE.x <span class="sc">+</span> month <span class="sc">+</span> HCITY <span class="sc">+</span> market <span class="sc">+</span> ARELATE2 <span class="sc">+</span> HHMTYPE <span class="sc">+</span> SAPPTAM <span class="sc">+</span> TSEX.x <span class="sc">+</span> THHEGAI <span class="sc">+</span> TPEGAI <span class="sc">+</span> THIGHEDU <span class="sc">+</span> TCURTENR <span class="sc">+</span>  ALGNCUR <span class="sc">+</span> AELNG1 <span class="sc">+</span> DPMTEXP <span class="sc">+</span> AMOVERS <span class="sc">+</span> age <span class="sc">+</span> ALEASETP <span class="sc">+</span> ACAROWN<span class="sc">|</span> <span class="dv">0</span> <span class="sc">|</span>CONTROL, <span class="at">data  =</span> recs_trial_final)</span>
+<span id="cb25-84"><a href="#cb25-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-85"><a href="#cb25-85" aria-hidden="true" tabindex="-1"></a>SHOWad1_ <span class="ot">&lt;-</span> lfe<span class="sc">::</span><span class="fu">felm</span>(home_av <span class="sc">~</span> APRACE <span class="sc">|</span> CONTROL <span class="sc">+</span> SEQUENCE.x <span class="sc">+</span> month <span class="sc">+</span> HCITY <span class="sc">+</span> market <span class="sc">+</span> ARELATE2 <span class="sc">+</span> HHMTYPE <span class="sc">+</span> SAPPTAM <span class="sc">+</span> TSEX.x <span class="sc">+</span> THHEGAI <span class="sc">+</span> TPEGAI <span class="sc">+</span> THIGHEDU <span class="sc">+</span> TCURTENR <span class="sc">+</span>  ALGNCUR <span class="sc">+</span> AELNG1 <span class="sc">+</span> DPMTEXP <span class="sc">+</span> AMOVERS <span class="sc">+</span> age <span class="sc">+</span> ALEASETP <span class="sc">+</span> ACAROWN<span class="sc">|</span> <span class="dv">0</span> <span class="sc">|</span> CONTROL, <span class="at">data  =</span> recs_trial_final)</span>
+<span id="cb25-86"><a href="#cb25-86" aria-hidden="true" tabindex="-1"></a>SHOWad3_ <span class="ot">&lt;-</span> lfe<span class="sc">::</span><span class="fu">felm</span>(home_av <span class="sc">~</span> APRACE <span class="sc">+</span> w2012pc_Ad <span class="sc">+</span> b2012pc_Ad <span class="sc">+</span> a2012pc_Ad <span class="sc">+</span> hisp2012pc_Ad <span class="sc">+</span> logAdPrice <span class="sc">|</span> CONTROL <span class="sc">+</span> SEQUENCE.x <span class="sc">+</span> month <span class="sc">+</span> HCITY <span class="sc">+</span> market <span class="sc">+</span> ARELATE2 <span class="sc">+</span> HHMTYPE <span class="sc">+</span> SAPPTAM <span class="sc">+</span> TSEX.x <span class="sc">+</span> THHEGAI <span class="sc">+</span> TPEGAI <span class="sc">+</span> THIGHEDU <span class="sc">+</span> TCURTENR <span class="sc">+</span>  ALGNCUR <span class="sc">+</span> AELNG1 <span class="sc">+</span> DPMTEXP <span class="sc">+</span> AMOVERS <span class="sc">+</span> age <span class="sc">+</span> ALEASETP <span class="sc">+</span> ACAROWN<span class="sc">|</span> <span class="dv">0</span> <span class="sc">|</span>CONTROL, <span class="at">data  =</span> recs_trial_final)</span>
+<span id="cb25-87"><a href="#cb25-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-88"><a href="#cb25-88" aria-hidden="true" tabindex="-1"></a><span class="do">### GENERATE TABLES</span></span>
+<span id="cb25-89"><a href="#cb25-89" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="st">&quot;tmp/&quot;</span></span>
+<span id="cb25-90"><a href="#cb25-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-91"><a href="#cb25-91" aria-hidden="true" tabindex="-1"></a><span class="do">###########Control Group Mean####################</span></span>
+<span id="cb25-92"><a href="#cb25-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-93"><a href="#cb25-93" aria-hidden="true" tabindex="-1"></a>stargazer<span class="sc">::</span><span class="fu">stargazer</span>(SHOW1, SHOW3, SHOWad1, SHOWad3,</span>
+<span id="cb25-94"><a href="#cb25-94" aria-hidden="true" tabindex="-1"></a>          <span class="at">type =</span> <span class="st">&quot;text&quot;</span>,</span>
+<span id="cb25-95"><a href="#cb25-95" aria-hidden="true" tabindex="-1"></a>          <span class="at">out =</span> <span class="fu">paste0</span>(out, <span class="st">&quot;HUM_tab5_JPE.r&quot;</span>),</span>
+<span id="cb25-96"><a href="#cb25-96" aria-hidden="true" tabindex="-1"></a>          <span class="at">title=</span><span class="st">&quot;Steering and Neighborhood Effects&quot;</span>,</span>
+<span id="cb25-97"><a href="#cb25-97" aria-hidden="true" tabindex="-1"></a>          <span class="at">model.numbers =</span> F,</span>
+<span id="cb25-98"><a href="#cb25-98" aria-hidden="true" tabindex="-1"></a>          <span class="at">keep =</span> <span class="fu">c</span>(<span class="st">&quot;ofcolor&quot;</span>),</span>
+<span id="cb25-99"><a href="#cb25-99" aria-hidden="true" tabindex="-1"></a>          <span class="at">covariate.labels =</span> <span class="fu">c</span>(<span class="st">&quot;Racial Minority&quot;</span>),</span>
+<span id="cb25-100"><a href="#cb25-100" aria-hidden="true" tabindex="-1"></a>          <span class="at">keep.stat=</span><span class="fu">c</span>(<span class="st">&quot;n&quot;</span>,<span class="st">&quot;adj.rsq&quot;</span>),</span>
+<span id="cb25-101"><a href="#cb25-101" aria-hidden="true" tabindex="-1"></a>          <span class="at">digits=</span><span class="dv">4</span>,<span class="at">digits.extra=</span><span class="dv">0</span>,<span class="at">no.space=</span>T,<span class="at">align=</span>T,<span class="at">model.names=</span>F,<span class="at">notes.append=</span>T,<span class="at">object.names=</span>F,</span>
+<span id="cb25-102"><a href="#cb25-102" aria-hidden="true" tabindex="-1"></a>          <span class="at">add.lines =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">&quot;ln(Price) Advert Home&quot;</span>,<span class="st">&quot;N&quot;</span>,<span class="st">&quot;Y&quot;</span>,<span class="st">&quot;N&quot;</span>,<span class="st">&quot;Y&quot;</span>),</span>
+<span id="cb25-103"><a href="#cb25-103" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">c</span>(<span class="st">&quot;Racial Comp Advert Home&quot;</span>,<span class="st">&quot;N&quot;</span>,<span class="st">&quot;Y&quot;</span>,<span class="st">&quot;N&quot;</span>,<span class="st">&quot;Y&quot;</span>)))</span>
+<span id="cb25-104"><a href="#cb25-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-105"><a href="#cb25-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-106"><a href="#cb25-106" aria-hidden="true" tabindex="-1"></a>stargazer<span class="sc">::</span><span class="fu">stargazer</span>(SHOW1_, SHOW3_, SHOWad1_, SHOWad3_,</span>
+<span id="cb25-107"><a href="#cb25-107" aria-hidden="true" tabindex="-1"></a>          <span class="at">type =</span> <span class="st">&quot;text&quot;</span>,</span>
+<span id="cb25-108"><a href="#cb25-108" aria-hidden="true" tabindex="-1"></a>          <span class="at">out =</span> <span class="fu">paste0</span>(out, <span class="st">&quot;HUM_tab5_JPE_.txt&quot;</span>),</span>
+<span id="cb25-109"><a href="#cb25-109" aria-hidden="true" tabindex="-1"></a>          <span class="at">title=</span><span class="st">&quot;Steering and Neighborhood Effects&quot;</span>,</span>
+<span id="cb25-110"><a href="#cb25-110" aria-hidden="true" tabindex="-1"></a>          <span class="at">dep.var.labels.include =</span> F,</span>
+<span id="cb25-111"><a href="#cb25-111" aria-hidden="true" tabindex="-1"></a>          <span class="at">column.labels =</span> <span class="fu">c</span>(<span class="st">&quot;Number of Recommendations&quot;</span>,<span class="st">&quot;Home Availability&quot;</span>),</span>
+<span id="cb25-112"><a href="#cb25-112" aria-hidden="true" tabindex="-1"></a>          <span class="at">model.numbers =</span> F,</span>
+<span id="cb25-113"><a href="#cb25-113" aria-hidden="true" tabindex="-1"></a>          <span class="at">keep =</span> <span class="fu">c</span>(<span class="st">&quot;APRACE&quot;</span>),</span>
+<span id="cb25-114"><a href="#cb25-114" aria-hidden="true" tabindex="-1"></a>          <span class="at">covariate.labels =</span> <span class="fu">c</span>(<span class="st">&quot;African American&quot;</span>,</span>
+<span id="cb25-115"><a href="#cb25-115" aria-hidden="true" tabindex="-1"></a>                               <span class="st">&quot;Hispanic&quot;</span>,</span>
+<span id="cb25-116"><a href="#cb25-116" aria-hidden="true" tabindex="-1"></a>                               <span class="st">&quot;Asian&quot;</span>,</span>
+<span id="cb25-117"><a href="#cb25-117" aria-hidden="true" tabindex="-1"></a>                               <span class="st">&quot;Other&quot;</span>),</span>
+<span id="cb25-118"><a href="#cb25-118" aria-hidden="true" tabindex="-1"></a>          <span class="at">keep.stat=</span><span class="fu">c</span>(<span class="st">&quot;n&quot;</span>,<span class="st">&quot;adj.rsq&quot;</span>),</span>
+<span id="cb25-119"><a href="#cb25-119" aria-hidden="true" tabindex="-1"></a>          <span class="at">digits=</span><span class="dv">4</span>,<span class="at">digits.extra=</span><span class="dv">0</span>,<span class="at">no.space=</span>T,<span class="at">align=</span>T,<span class="at">model.names=</span>F,<span class="at">notes.append=</span>T,<span class="at">object.names=</span>F,</span>
+<span id="cb25-120"><a href="#cb25-120" aria-hidden="true" tabindex="-1"></a>          <span class="at">add.lines =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">&quot;ln(Price) Advert Home&quot;</span>,<span class="st">&quot;N&quot;</span>,<span class="st">&quot;Y&quot;</span>,<span class="st">&quot;N&quot;</span>,<span class="st">&quot;Y&quot;</span>),</span>
+<span id="cb25-121"><a href="#cb25-121" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">c</span>(<span class="st">&quot;Racial Comp Advert Home&quot;</span>,<span class="st">&quot;N&quot;</span>,<span class="st">&quot;Y&quot;</span>,<span class="st">&quot;N&quot;</span>,<span class="st">&quot;Y&quot;</span>)))</span>
+<span id="cb25-122"><a href="#cb25-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-123"><a href="#cb25-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-124"><a href="#cb25-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-125"><a href="#cb25-125" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-126"><a href="#cb25-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-127"><a href="#cb25-127" aria-hidden="true" tabindex="-1"></a><span class="fu"># Robustness- Alternate Computation</span></span>
+<span id="cb25-128"><a href="#cb25-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-129"><a href="#cb25-129" aria-hidden="true" tabindex="-1"></a><span class="in">```{r alternate-computation}</span></span>
+<span id="cb25-130"><a href="#cb25-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-131"><a href="#cb25-131" aria-hidden="true" tabindex="-1"></a>altSHOW3 <span class="ot">&lt;-</span> lfe<span class="sc">::</span> <span class="fu">felm</span>(show <span class="sc">~</span> ofcolor <span class="sc">+</span> w2012pc_Ad <span class="sc">+</span> b2012pc_Ad <span class="sc">+</span> a2012pc_Ad <span class="sc">+</span> hisp2012pc_Ad <span class="sc">+</span> logAdPrice <span class="sc">|</span> CONTROL <span class="sc">+</span> SEQUENCE.x <span class="sc">+</span> month <span class="sc">+</span> HCITY <span class="sc">+</span> market <span class="sc">+</span> ARELATE2 <span class="sc">+</span> HHMTYPE <span class="sc">+</span> SAPPTAM <span class="sc">+</span> TSEX.x <span class="sc">+</span> THHEGAI <span class="sc">+</span> TPEGAI <span class="sc">+</span> THIGHEDU <span class="sc">+</span> TCURTENR <span class="sc">+</span>  ALGNCUR <span class="sc">+</span> AELNG1 <span class="sc">+</span> DPMTEXP <span class="sc">+</span> AMOVERS <span class="sc">+</span> age <span class="sc">+</span> ALEASETP <span class="sc">+</span> ACAROWN<span class="sc">|</span> <span class="dv">0</span> <span class="sc">|</span>CONTROL, <span class="at">data  =</span> recs_trial_final, <span class="at">cmethod=</span><span class="st">&quot;cgm2&quot;</span>, <span class="at">psdef=</span><span class="cn">FALSE</span>, <span class="at">exactDOF=</span><span class="cn">TRUE</span>)</span>
+<span id="cb25-132"><a href="#cb25-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-133"><a href="#cb25-133" aria-hidden="true" tabindex="-1"></a>altSHOW3_ <span class="ot">&lt;-</span> lfe<span class="sc">::</span><span class="fu">felm</span>(show <span class="sc">~</span> APRACE <span class="sc">+</span> w2012pc_Ad <span class="sc">+</span> b2012pc_Ad <span class="sc">+</span> a2012pc_Ad <span class="sc">+</span> hisp2012pc_Ad <span class="sc">+</span> logAdPrice <span class="sc">|</span> CONTROL <span class="sc">+</span> SEQUENCE.x <span class="sc">+</span> month <span class="sc">+</span> HCITY <span class="sc">+</span> market <span class="sc">+</span> ARELATE2 <span class="sc">+</span> HHMTYPE <span class="sc">+</span> SAPPTAM <span class="sc">+</span> TSEX.x <span class="sc">+</span> THHEGAI <span class="sc">+</span> TPEGAI <span class="sc">+</span> THIGHEDU <span class="sc">+</span> TCURTENR <span class="sc">+</span>  ALGNCUR <span class="sc">+</span> AELNG1 <span class="sc">+</span> DPMTEXP <span class="sc">+</span> AMOVERS <span class="sc">+</span> age <span class="sc">+</span> ALEASETP <span class="sc">+</span> ACAROWN<span class="sc">|</span> <span class="dv">0</span> <span class="sc">|</span>CONTROL, <span class="at">data  =</span> recs_trial_final, <span class="at">cmethod=</span><span class="st">&quot;cgm2&quot;</span>, <span class="at">psdef=</span><span class="cn">FALSE</span>, <span class="at">exactDOF=</span><span class="cn">TRUE</span>)</span>
+<span id="cb25-134"><a href="#cb25-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-135"><a href="#cb25-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-136"><a href="#cb25-136" aria-hidden="true" tabindex="-1"></a><span class="co"># estimated in feols (conversion through lme2fixest package)</span></span>
+<span id="cb25-137"><a href="#cb25-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-138"><a href="#cb25-138" aria-hidden="true" tabindex="-1"></a>feSHOW3 <span class="ot">&lt;-</span> fixest<span class="sc">::</span><span class="fu">feols</span>(show <span class="sc">~</span> ofcolor <span class="sc">+</span> w2012pc_Ad <span class="sc">+</span> b2012pc_Ad <span class="sc">+</span> a2012pc_Ad <span class="sc">+</span> hisp2012pc_Ad <span class="sc">+</span> logAdPrice <span class="sc">|</span> CONTROL <span class="sc">+</span> SEQUENCE.x <span class="sc">+</span> month <span class="sc">+</span> HCITY <span class="sc">+</span> market <span class="sc">+</span> ARELATE2 <span class="sc">+</span> HHMTYPE <span class="sc">+</span> SAPPTAM <span class="sc">+</span> TSEX.x <span class="sc">+</span> THHEGAI <span class="sc">+</span> TPEGAI <span class="sc">+</span> THIGHEDU <span class="sc">+</span> TCURTENR <span class="sc">+</span>  ALGNCUR <span class="sc">+</span> AELNG1 <span class="sc">+</span> DPMTEXP <span class="sc">+</span> AMOVERS <span class="sc">+</span> age <span class="sc">+</span> ALEASETP <span class="sc">+</span> ACAROWN, <span class="at">cluster =</span> <span class="sc">~</span>CONTROL, <span class="at">data  =</span> recs_trial_final)</span>
+<span id="cb25-139"><a href="#cb25-139" aria-hidden="true" tabindex="-1"></a>feSHOW3_ <span class="ot">&lt;-</span> fixest<span class="sc">::</span><span class="fu">feols</span>(show <span class="sc">~</span> APRACE <span class="sc">+</span> w2012pc_Ad <span class="sc">+</span> b2012pc_Ad <span class="sc">+</span> a2012pc_Ad <span class="sc">+</span> hisp2012pc_Ad <span class="sc">+</span> logAdPrice <span class="sc">|</span> CONTROL <span class="sc">+</span> SEQUENCE.x <span class="sc">+</span> month <span class="sc">+</span> HCITY <span class="sc">+</span> market <span class="sc">+</span> ARELATE2 <span class="sc">+</span> HHMTYPE <span class="sc">+</span> SAPPTAM <span class="sc">+</span> TSEX.x <span class="sc">+</span> THHEGAI <span class="sc">+</span> TPEGAI <span class="sc">+</span> THIGHEDU <span class="sc">+</span> TCURTENR <span class="sc">+</span>  ALGNCUR <span class="sc">+</span> AELNG1 <span class="sc">+</span> DPMTEXP <span class="sc">+</span> AMOVERS <span class="sc">+</span> age <span class="sc">+</span> ALEASETP <span class="sc">+</span> ACAROWN, <span class="at">cluster =</span> <span class="sc">~</span>CONTROL, <span class="at">data  =</span> recs_trial_final)</span>
+<span id="cb25-140"><a href="#cb25-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-141"><a href="#cb25-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-142"><a href="#cb25-142" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(SHOW3)</span>
+<span id="cb25-143"><a href="#cb25-143" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(SHOW3_)</span>
+<span id="cb25-144"><a href="#cb25-144" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(altSHOW3)</span>
+<span id="cb25-145"><a href="#cb25-145" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(altSHOW3_)</span>
+<span id="cb25-146"><a href="#cb25-146" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(feSHOW3)</span>
+<span id="cb25-147"><a href="#cb25-147" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(feSHOW3_)</span>
+<span id="cb25-148"><a href="#cb25-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-149"><a href="#cb25-149" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
