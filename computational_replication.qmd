@@ -123,3 +123,27 @@ stargazer::stargazer(SHOW1_, SHOW3_, SHOWad1_, SHOWad3_,
 
 
 ```
+
+# Robustness- Alternate Computation
+
+```{r alternate-computation}
+
+altSHOW3 <- lfe:: felm(show ~ ofcolor + w2012pc_Ad + b2012pc_Ad + a2012pc_Ad + hisp2012pc_Ad + logAdPrice | CONTROL + SEQUENCE.x + month + HCITY + market + ARELATE2 + HHMTYPE + SAPPTAM + TSEX.x + THHEGAI + TPEGAI + THIGHEDU + TCURTENR +  ALGNCUR + AELNG1 + DPMTEXP + AMOVERS + age + ALEASETP + ACAROWN| 0 |CONTROL, data  = recs_trial_final, cmethod="cgm2", psdef=FALSE, exactDOF=TRUE)
+
+altSHOW3_ <- lfe::felm(show ~ APRACE + w2012pc_Ad + b2012pc_Ad + a2012pc_Ad + hisp2012pc_Ad + logAdPrice | CONTROL + SEQUENCE.x + month + HCITY + market + ARELATE2 + HHMTYPE + SAPPTAM + TSEX.x + THHEGAI + TPEGAI + THIGHEDU + TCURTENR +  ALGNCUR + AELNG1 + DPMTEXP + AMOVERS + age + ALEASETP + ACAROWN| 0 |CONTROL, data  = recs_trial_final, cmethod="cgm2", psdef=FALSE, exactDOF=TRUE)
+
+
+# estimated in feols (conversion through lme2fixest package)
+
+feSHOW3 <- fixest::feols(show ~ ofcolor + w2012pc_Ad + b2012pc_Ad + a2012pc_Ad + hisp2012pc_Ad + logAdPrice | CONTROL + SEQUENCE.x + month + HCITY + market + ARELATE2 + HHMTYPE + SAPPTAM + TSEX.x + THHEGAI + TPEGAI + THIGHEDU + TCURTENR +  ALGNCUR + AELNG1 + DPMTEXP + AMOVERS + age + ALEASETP + ACAROWN, cluster = ~CONTROL, data  = recs_trial_final)
+feSHOW3_ <- fixest::feols(show ~ APRACE + w2012pc_Ad + b2012pc_Ad + a2012pc_Ad + hisp2012pc_Ad + logAdPrice | CONTROL + SEQUENCE.x + month + HCITY + market + ARELATE2 + HHMTYPE + SAPPTAM + TSEX.x + THHEGAI + TPEGAI + THIGHEDU + TCURTENR +  ALGNCUR + AELNG1 + DPMTEXP + AMOVERS + age + ALEASETP + ACAROWN, cluster = ~CONTROL, data  = recs_trial_final)
+
+
+summary(SHOW3)
+summary(SHOW3_)
+summary(altSHOW3)
+summary(altSHOW3_)
+summary(feSHOW3)
+summary(feSHOW3_)
+
+```
