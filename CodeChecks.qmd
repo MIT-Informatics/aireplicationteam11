@@ -18,20 +18,53 @@ library(magrittr, include.only="%<>%")
 # Code Checks
 
 ```{r code-check-tools}
-requireNamespace("codetools")
 requireNamespace("lintr")
-requireNamespace("goodpractice")
 
 # !diagnostics on 
 # !diagnostics level=all
 ```
 
+Each source file checks for and installs packages with unncessary sub-dependecy chains causing performance issues. Check first here.
+
+```{r check-libs}
+
+pkgTest <- function(x) {
+  if (!require(x, character.only = TRUE))
+  {
+    cat("\n\n*** installing ",x,"***w \n\n")
+    install.packages(x, dep=NA)
+    if(!require(x, character.only = TRUE)) stop("Package not found")
+    FALSE
+  } else {
+    TRUE
+  }
+}
+# Load packages
+packages <- c("readxl", "readstata13", "lfe", "Synth","data.table", "plm", "ggplot2", "MatchIt", "experiment", "stargazer")
+res<-lapply(packages, pkgTest)
+
+```
+
 ```{r run-code}
-setwd("path_disabled_src/")
-table_files <- dir(".", pattern = "\\.*\\.R$")
+setwd("path_disabled_src/data")
+table_files <- dir("../", pattern = "\\.*\\.R$", full.names = TRUE)
+
+
 
 for (i in table_files) {
   cat("\n]n***",i,"***\n\n")
-  try(source(file = i, echo = TRUE, verbose = TRUE))
+  try(source(file = i, echo = TRUE, verbose = FALSE))
+}
+```
+
+```{r code-lint}
+
+table_files <- dir("path_disabled_src/", pattern = "\\.*\\.R$", full.names = TRUE)
+
+
+
+for (i in table_files) {
+  cat("\n]n***",i,"***\n\n")
+  try(print(lintr::lint(file = i)))
 }
 ```
