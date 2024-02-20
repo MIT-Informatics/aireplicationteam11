@@ -6,6 +6,10 @@ editor: visual
 
 # Computational Reproducibility
 
+Authors table![](figs/table5_orig.png)
+
+Extracted from Table5...R file.
+
 Original code listed many more libraries, but did not use them.
 
 ```{r setup}
@@ -13,7 +17,7 @@ requireNamespace("stargazer")
 requireNamespace("lfe")
 ```
 
-Extracted from Table5...R file. Modfied to reference functions through namespace, rather than load all libraries, and to reference data through path, rather than to change wd.
+Modfied to reference functions through namespace, rather than load all libraries, and to reference data through path, rather than to change wd. Changed output of stargazer to plain text so it is included in report automatically.
 
 ```{r}
 
@@ -84,7 +88,7 @@ out <- "tmp/"
 
 stargazer::stargazer(SHOW1, SHOW3, SHOWad1, SHOWad3,
           type = "text",
-          out = paste0(out, "HUM_tab5_JPE.txt"),
+          out = paste0(out, "HUM_tab5_JPE.r"),
           title="Steering and Neighborhood Effects",
           model.numbers = F,
           keep = c("ofcolor"),
