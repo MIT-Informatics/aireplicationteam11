@@ -1,6 +1,10 @@
 ---
-title: "computational_reproducibilitye"
-format: html
+title: "computational_reproducibility"
+format:
+  html:
+    embed-resources: true
+    code-fold: true
+    code-tools: true
 editor: visual
 ---
 
@@ -19,7 +23,7 @@ requireNamespace("lfe")
 
 Modfied to reference functions through namespace, rather than load all libraries, and to reference data through path, rather than to change wd. Changed output of stargazer to plain text so it is included in report automatically.
 
-```{r}
+```{r table5}
 
 
 data.dir <- "authors_replication/HuD_Replication/Final Data Sets/"
